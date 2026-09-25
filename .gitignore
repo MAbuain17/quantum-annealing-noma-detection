@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+.ipynb_checkpoints/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.env
+dwave.conf

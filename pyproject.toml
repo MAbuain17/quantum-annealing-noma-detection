@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qa-noma-detection"
+version = "1.0.0"
+description = "Uplink NOMA detection with a QUBO formulation and D-Wave QPU experiments"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.24", "matplotlib>=3.7", "jupyterlab>=4.0"]
+
+[project.optional-dependencies]
+qpu = ["dwave-system>=1.20"]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+py-modules = ["noma_detection"]
