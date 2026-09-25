@@ -62,13 +62,14 @@ Run the checks with `python -m unittest discover -s tests -v` after installing t
 
 ## Model and formulation
 
-For one received complex sample, the uplink model is
+For one received complex sample, the uplink model is $y=\sum_k H_ks_k+n$, where each $H_k$ contains per-user transmit power, Rayleigh fading, and distance-dependent path loss. Write each encoded symbol as $s_k=c+\sum_b w_b q_{kb}$, with binary $q_{kb}$. Let $d=y-c\sum_k H_k$ and $A_{kb}=H_kw_b$. Expanding the squared residual gives:
 
-$$y = \sum_{k=1}^{K} h_k\sqrt{P_k}s_k+n,$$
-
-where each $h_k$ contains Rayleigh fading and distance-dependent path loss. For a fixed frame, write the encoded symbols as $s_k=c+\sum_b w_b q_{kb}$ with $q_{kb}\in\{0,1\}$. With $d=y-c\sum_k H_k$ and $A_{kb}=H_kw_b$, the ML residual becomes
-
-$$\left|d-\sum_i A_iq_i\right|^2 = |d|^2 + \sum_i\left(|A_i|^2-2\mathrm{Re}(d^*A_i)\right)q_i + \sum_{i<j}2\mathrm{Re}(A_i^*A_j)q_iq_j.$$
+```text
+offset = |d|²
+Q[i,i] = |A_i|² - 2 Re(conj(d) A_i)
+Q[i,j] = 2 Re(conj(A_i) A_j),  i < j
+E(q) = offset + Σ_i Q[i,i] q_i + Σ_{i<j} Q[i,j] q_i q_j
+```
 
 The nonconstant terms are the QUBO. `qubo_from_frame` returns both the coefficients and the constant offset so that their energy can be checked against the original residual. The exhaustive solver searches at most 16 binary variables in these teaching scenarios; that cap keeps the classical comparison practical and is not a scalability result.
 
