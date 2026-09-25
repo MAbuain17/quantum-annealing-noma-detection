@@ -68,7 +68,7 @@ $$y = \sum_{k=1}^{K} h_k\sqrt{P_k}s_k+n,$$
 
 where each $h_k$ contains Rayleigh fading and distance-dependent path loss. For a fixed frame, write the encoded symbols as $s_k=c+\sum_b w_b q_{kb}$ with $q_{kb}\in\{0,1\}$. With $d=y-c\sum_k H_k$ and $A_{kb}=H_kw_b$, the ML residual becomes
 
-$$\left|d-\sum_i A_iq_i\right|^2 = |d|^2 + \sum_i\left(|A_i|^2-2\operatorname{Re}(d^*A_i)\right)q_i + \sum_{i<j}2\operatorname{Re}(A_i^*A_j)q_iq_j.$$
+$$\left|d-\sum_i A_iq_i\right|^2 = |d|^2 + \sum_i\left(|A_i|^2-2\mathrm{Re}(d^*A_i)\right)q_i + \sum_{i<j}2\mathrm{Re}(A_i^*A_j)q_iq_j.$$
 
 The nonconstant terms are the QUBO. `qubo_from_frame` returns both the coefficients and the constant offset so that their energy can be checked against the original residual. The exhaustive solver searches at most 16 binary variables in these teaching scenarios; that cap keeps the classical comparison practical and is not a scalability result.
 
