@@ -1,0 +1,182 @@
+%!TEX root = ../thesis.tex
+% ******************************* Thesis Appendix A ****************************
+\chapter{QUBO MODEL COEFFICIENTS}  \label{Chapter:append}
+%In this section, we present the coefficients for the QUBO model for 16QAM and 64QAM modulation types
+\section{16-QAM}
+The $Q_{ij}^{16{\rm Q}}$ values can be found using
+\vspace{-1cm}
+\begin{figure}[H]
+
+	\begin{multline}
+		\label{16q_Q_4i_minus_3_both}
+		Q_{(4i-3),(4i-3)}^{16{\rm Q}} = \frac{P}{9} \left[ 
+		-4 h_{i,{\rm R}} \left( h_{i,{\rm R}} + 3 \left(  \left( \sum_{k=1}^{N} h_{k,{\rm R}} - h_{i,{\rm R}} \right) - \left( \sum_{k=1}^{N} h_{k,{\rm I}} - h_{i,{\rm I}} \right)
+		\right) \right)
+		\right. \\
+		\left.
+		-4 h_{i,{\rm I}} \left( h_{i,{\rm I}} + 3 \left(  \left( \sum_{k=1}^{N} h_{k,{\rm R}} - h_{i,{\rm R}} \right) + \left( \sum_{k=1}^{N} h_{k,{\rm I}} - h_{i,{\rm I}} \right)
+		\right) \right) 
+		\right] 
+		- \frac{\sqrt{2 P}}{3}\left( 4 y_{\rm R} h_{i,{\rm R}} + 4 y_{\rm I} h_{i,{\rm I}} \right)
+	\end{multline}
+ \end{figure}
+ \vspace{-1.9cm}
+ \begin{figure}[H]
+	\begin{multline}
+		\label{16q_Q_4i_minus_2_both}
+		Q_{(4i-2),(4i-2)}^{16{\rm Q}} = \frac{P}{9} \left[ 
+		-4 h_{i,{\rm R}} \left( h_{i,{\rm R}} + \frac{3}{2} \left(  \left( \sum_{k=1}^{N} h_{k,{\rm R}} - h_{i,{\rm R}} \right) - \left( \sum_{k=1}^{N} h_{k,{\rm I}} - h_{i,{\rm I}} \right)
+		\right) \right)
+		\right. \\
+		\left.
+		-4 h_{i,{\rm I}} \left( h_{i,{\rm I}} + \frac{3}{2} \left(  \left( \sum_{k=1}^{N} h_{k,{\rm R}} - h_{i,{\rm R}} \right) + \left( \sum_{k=1}^{N} h_{k,{\rm I}} - h_{i,{\rm I}} \right)
+		\right) \right) 
+		\right] 
+		- \frac{\sqrt{2 P}}{3}\left( 2 y_{\rm R} h_{i,{\rm R}} + 2 y_{\rm I} h_{i,{\rm I}} \right)
+	\end{multline}
+ \end{figure}
+ \vspace{-1.9cm}
+ \begin{figure}[H]
+	\begin{multline}
+		\label{16q_Q_4i_minus_1_both}
+		Q_{(4i-1),(4i-1)}^{16{\rm Q}} = \frac{P}{9} \left[ 
+		-4 h_{i,{\rm R}} \left( h_{i,{\rm R}} + 3 \left(  \left( \sum_{k=1}^{N} h_{k,{\rm R}} - h_{i,{\rm R}} \right) + \left( \sum_{k=1}^{N} h_{k,{\rm I}} - h_{i,{\rm I}} \right)
+		\right) \right)
+		\right. \\
+		\left.
+		-4 h_{i,{\rm I}} \left( h_{i,{\rm I}} + 3 \left( - \left( \sum_{k=1}^{N} h_{k,{\rm R}} - h_{i,{\rm R}} \right) + \left( \sum_{k=1}^{N} h_{k,{\rm I}} - h_{i,{\rm I}} \right)
+		\right) \right) 
+		\right] 
+		- \frac{\sqrt{2 P}}{3}\left( -4 y_{\rm R} h_{i,{\rm I}} + 4 y_{\rm I} h_{i,{\rm R}} \right)
+	\end{multline}
+ \end{figure}
+ \begin{figure}
+	\begin{multline}
+		\label{16q_Q_4i_both}
+		Q_{(4i),(4i)}^{16{\rm Q}} = \frac{P}{9} \left[ 
+		-4 h_{i,{\rm R}} \left( h_{i,{\rm R}} + \frac{3}{2} \left(  \left( \sum_{k=1}^{N} h_{k,{\rm R}} - h_{i,{\rm R}} \right) + \left( \sum_{k=1}^{N} h_{k,{\rm I}} - h_{i,{\rm I}} \right)
+		\right) \right)
+		\right. \\
+		\left.
+		-4 h_{i,{\rm I}} \left( h_{i,{\rm I}} + \frac{3}{2} \left( - \left( \sum_{k=1}^{N} h_{k,{\rm R}} - h_{i,{\rm R}} \right) + \left( \sum_{k=1}^{N} h_{k,{\rm I}} - h_{i,{\rm I}} \right)
+		\right) \right) 
+		\right] 
+		- \frac{\sqrt{2 P}}{3}\left( -2 y_{\rm R} h_{i,{\rm I}} + 2 y_{\rm I} h_{i,{\rm R}} \right)
+	\end{multline}
+	
+\end{figure}
+\hrule
+{\allowdisplaybreaks
+	\begin{align}
+	\label{16q_Q_zero}
+	Q_{(4i-3),(4i-1)}^{16{\rm Q}} &= Q_{(4i-3),(4i)}^{16{\rm Q}}  \nonumber \\
+	&= Q_{(4i-2),(4i-1)}^{16{\rm Q}} = Q_{(4i-2),(4i)}^{16{\rm Q}} = 0, \\
+	\label{16q_Q_odd_even}
+	Q_{(4i-3),(4i-2)}^{16{\rm Q}} &= Q_{(4i-1),(4i)}^{16{\rm Q}} = \frac{8 P}{9} \left( |h_{i,{\rm R}}|^2 + |h_{i,{\rm I}}|^2 \right), \\
+	\label{16q_Qij_Eq7}
+	Q_{(4i-3),(4j-2)}^{16{\rm Q}} &= Q_{(4i-2),(4j-3)}^{16{\rm Q}} = Q_{(4i),(4j-1)}^{16{\rm Q}} \nonumber \\
+	= Q_{(4i-1),(4j)}^{16{\rm Q}} &= 
+	\frac{P}{9} \left( 8 h_{i,{\rm R}} h_{j,{\rm R}} + 8 h_{i,{\rm I}} h_{j,{\rm I}} \right), \\
+	\label{16q_Qij_even}
+	Q_{(4i-2),(4j-2)}^{16{\rm Q}} &= Q_{(4i),(4j)}^{16{\rm Q}} = \frac{P}{9} \left( 4 h_{i,{\rm R}} h_{j,{\rm R}} + 4 h_{i,{\rm I}} h_{j,{\rm I}} \right), \\
+	\label{16q_Qij_odd}
+	Q_{(4i-1),(4j-1)}^{16{\rm Q}} &= Q_{(4i-3),(4j-3)}^{16{\rm Q}}  \nonumber\\
+	&= \frac{P}{9} \left( 16 h_{i,{\rm R}} h_{j,{\rm R}} + 16 h_{i,{\rm I}} h_{j,{\rm I}} \right), \\
+	\label{16q_Qij_Eq8}
+	Q_{(4i-2),(4j-1)}^{16{\rm Q}} &= Q_{(4i-3),(4j)}^{16{\rm Q}} = \frac{8 P}{9} \left( - h_{i,{\rm R}} h_{j,{\rm I}} + h_{i,{\rm I}} h_{j,{\rm R}} \right), \\
+	\label{16q_Qij_Eq9}
+	Q_{(4i-1),(4j-2)}^{16{\rm Q}} &= Q_{(4i),(4j-3)}^{16{\rm Q}} \nonumber \\
+	&= \frac{P}{9} \left( -8 h_{i,{\rm I}} h_{j,{\rm R}} + 8 h_{i,{\rm R}} h_{j,{\rm I}} \right), \\
+	\label{16q_Qij_Eq10}
+	Q_{(4i-2),(4j)}^{16{\rm Q}} &= 
+	\frac{P}{9} \left( -4 h_{i,{\rm R}} h_{j,{\rm I}} + 4 h_{i,{\rm I}} h_{j,{\rm R}} \right), \\
+	\label{16q_Qij_Eq11}
+	Q_{(4i),(4j-2)}^{16{\rm Q}} &= 
+	\frac{P}{9} \left( -4 h_{i,{\rm I}} h_{j,{\rm R}} + 4 h_{i,{\rm R}} h_{j,{\rm I}} \right), \\
+	\label{16q_Qij_Eq12}
+	Q_{(4i-1),(4j-3)}^{16{\rm Q}} &= 
+	\frac{P}{9} \left( -16 h_{i,{\rm I}} h_{j,{\rm R}} + 16 h_{i,{\rm R}} h_{j,{\rm I}} \right), \\
+	\label{16q_Qij_Eq13}
+	Q_{(4i-3),(4j-1)}^{16{\rm Q}} &= 
+	\frac{P}{9} \left( -16 h_{i,{\rm R}} h_{j,{\rm I}} + 16 h_{i,{\rm I}} h_{j,{\rm R}} \right).
+\end{align}}
+\section{64-QAM}
+The corresponding $Q_{ij}^{64{\rm Q}}$\footnote{Note that the equations involving the positive integer variables \(i\) and \(j\) must satisfy the condition \(i < j\).} values are presented below, where $\left\lbrace c_1, c_2, c_3 \right\rbrace = \left\lbrace 6, 14, 8 \right\rbrace$ for $m = 6i - 5$ or $l = 6i - 2$, $\left\lbrace 5, 7, 4 \right\rbrace$ for $m = 6i - 4$ or $l = 6i - 1$, and $\left\lbrace 3, \frac{7}{2}, 2 \right\rbrace$ for $m = 6i - 3$ or $l = 6i$.
+\begin{figure}[H]
+	\begin{multline}
+		Q_{(m),(m)}^{64{\rm Q}} = \frac{P}{49}
+		\left[ -4 h_{i,{\rm R}} 
+		\left(
+		c_1 h_{i,{\rm R}} + c_2 \left( \left( \sum_{k=1}^{N} h_{k,{\rm R}} - h_{i,{\rm R}} \right) - \left( \sum_{k=1}^{N} h_{k,{\rm I}} - h_{i,{\rm I}} \right) \right)
+		\right.
+		\right.
+		\\
+		\left. \left. 
+		-4 h_{i,{\rm I}} 
+		\left(
+		c_1 h_{i,{\rm I}} + c_2 \left( \left( \sum_{k=1}^{N} h_{k,{\rm R}} - h_{i,{\rm R}} \right) 
+		+ \left( \sum_{k=1}^{N} h_{k,{\rm I}} - h_{i,{\rm I}} \right) \right)
+		\right)
+		\right)
+		\right]
+		- \frac{\sqrt{2 P}}{7} c_3 \left( y_{\rm R} h_{i,{\rm R}} + y_{\rm I} h_{i,{\rm I}}\right)
+	\end{multline}
+ \vspace{-1cm}
+	\begin{multline}
+		Q_{(l),(l)}^{64{\rm Q}} = \frac{P}{49}
+		\left[ -4 h_{i,{\rm R}} 
+		\left(
+		c_1 h_{i,{\rm R}} + c_2 \left( \left( \sum_{k=1}^{N} h_{k,{\rm R}} - h_{i,{\rm R}} \right) + \left( \sum_{k=1}^{N} h_{k,{\rm I}} - h_{i,{\rm I}} \right) \right)
+		\right.
+		\right.
+		\\
+		\left. \left. 
+		-4 h_{i,{\rm I}} 
+		\left(
+		c_1 h_{i,{\rm I}} + c_2 \left( -\left( \sum_{k=1}^{N} h_{k,{\rm R}} - h_{i,{\rm R}} \right) 
+		+ \left( \sum_{k=1}^{N} h_{k,{\rm I}} - h_{i,{\rm I}} \right) \right)
+		\right)
+		\right)
+		\right]
+		- \frac{\sqrt{2 P}}{7} c_3 \left( y_{\rm I} h_{i,{\rm R}} - y_{\rm R} h_{i,{\rm I}}\right)
+	\end{multline}
+	\hrule
+\end{figure}
+\vspace{-1.5cm}
+{\allowdisplaybreaks
+\begin{align}
+	Q_{(6i-5),(6i-4)}^{64{\rm Q}} =& Q_{(6i-2),(6i-1)}^{64{\rm Q}} = \frac{P}{49} \left( 32 |h_{i,{\rm R}}|^2 + 32 |h_{i,{\rm I}}|^2 \right), \\
+	Q_{(6i-5),(6i-3)}^{64{\rm Q}} =& Q_{(6i-2),(6i)}^{64{\rm Q}} = \frac{P}{49} \left( 16 |h_{i,{\rm R}}|^2 + 16 |h_{i,{\rm I}}|^2 \right), \\
+	Q_{(6i-4),(6i-3)}^{64{\rm Q}} =& Q_{(6i-1),(6i)}^{64{\rm Q}} = \frac{8 P}{49} \left( |h_{i,{\rm R}}|^2 \hspace{-0.1cm} +\hspace{-0.1cm}|h_{i,{\rm I}}|^2 \right), \\
+	Q_{(6i-5),(6i-2)}^{64{\rm Q}} =& Q_{(6i-5),(6i-1)}^{64{\rm Q}} = Q_{(6i-5),(6i)}^{64{\rm Q}} \nonumber \\
+	= Q_{(6i-4),(6i-2)}^{64{\rm Q}} =& Q_{(6i-4),(6i-1)}^{64{\rm Q}} = Q_{(6i-4),(6i)}^{64{\rm Q}}  \nonumber \\
+	= Q_{(6i-3),(6i-2)}^{64{\rm Q}} =& Q_{(6i-3),(6i-1)}^{64{\rm Q}} = Q_{(6i-3),(6i)}^{64{\rm Q}} = 0, \\
+	Q_{(6i-5),(6j-5)}^{64{\rm Q}} &= Q_{(6i-2),(6j-2)}^{64{\rm Q}} \nonumber\\
+	= \frac{P}{49} & \left( 64 h_{i,{\rm R}} h_{j,{\rm R}} + 64 h_{i,{\rm I}} h_{j,{\rm I}} \right), \\
+	Q_{(6i-5),(6j-2)}^{64{\rm Q}} &= \frac{P}{49} \left( -64 h_{i,{\rm R}} h_{j,{\rm I}} + 64 h_{i,{\rm I}} h_{j,{\rm R}} \right), \\
+	Q_{(6i-2),(6j-5)}^{64{\rm Q}} &= \frac{P}{49} \left(64 h_{i,{\rm R}} h_{j,{\rm I}} - 64 h_{i,{\rm I}} h_{j,{\rm R}} \right), \\
+	Q_{(6i-5),(6j-4)}^{64{\rm Q}} &= Q_{(6i-4),(6j-5)}^{64{\rm Q}} = Q_{(6i-2),(6j-1)}^{64{\rm Q}} \nonumber\\
+	= Q_{(6i-1),(6j-2)}^{64{\rm Q}} &= \frac{P}{49} \left(32 h_{i,{\rm R}} h_{j,{\rm R}} + 32 h_{i,{\rm I}} h_{j,{\rm I}} \right), \\
+	Q_{(6i-5),(6j-1)}^{64{\rm Q}} &= Q_{(6i-4),(6j-2)}^{64{\rm Q}} \nonumber\\
+	=& \frac{P}{49} \left( -32 h_{i,{\rm R}} h_{j,{\rm I}} + 32 h_{i,{\rm I}} h_{j,{\rm R}} \right), \\
+	Q_{(6i-2),(6j-4)}^{64{\rm Q}} &= Q_{(6i-1),(6j-5)}^{64{\rm Q}} \nonumber\\
+	&=\frac{P}{49} \left( 32 h_{i,{\rm R}} h_{j,{\rm I}} - 32 h_{i,{\rm I}} h_{j,{\rm R}} \right), \\
+	Q_{(6i-5),(6j-3)}^{64{\rm Q}} &= Q_{(6i-4),(6j-4)}^{64{\rm Q}} = Q_{(6i-3),(6j-5)}^{64{\rm Q}} \nonumber\\
+	Q_{(6i-2),(6j)}^{64{\rm Q}} &= Q_{(6i-1),(6j-1)}^{64{\rm Q}} = Q_{(6i),(6j-2)}^{64{\rm Q}} \nonumber\\
+	&= \frac{P}{49} \left(16 h_{i,{\rm R}} h_{j,{\rm R}} + 16 h_{i,{\rm I}} h_{j,{\rm I}} \right), \\
+	Q_{(6i-5),(6j)}^{64{\rm Q}} &= Q_{(6i-4),(6j-1)}^{64{\rm Q}} = Q_{(6i-3),(6j-2)}^{64{\rm Q}} \nonumber\\
+	=& \frac{P}{49} \left( -16 h_{i,{\rm R}} h_{j,{\rm I}} + 16 h_{i,{\rm I}} h_{j,{\rm R}} \right), \\
+	Q_{(6i-2),(6j-3)}^{64{\rm Q}} &= Q_{(6i-1),(6j-4)}^{64{\rm Q}} = Q_{(6i),(6j-5)}^{64{\rm Q}} \nonumber\\
+	&= \frac{P}{49} \left( 16 h_{i,{\rm R}} h_{j,{\rm I}} - 16 h_{i,{\rm I}} h_{j,{\rm R}} \right), \\
+	Q_{(6i-4),(6j)}^{64{\rm Q}} &= Q_{(6i-3),(6j-1)}^{64{\rm Q}} \nonumber\\
+	&= \frac{P}{49} \left( -8 h_{i,{\rm R}} h_{j,{\rm I}} + 8 h_{i,{\rm I}} h_{j,{\rm R}} \right), \\
+	Q_{(6i-4),(6j-3)}^{64{\rm Q}} &= Q_{(6i-3),(6j-4)}^{64{\rm Q}} = 
+	Q_{(6i-1),(6j)}^{64{\rm Q}} 
+	\nonumber\\
+	= Q_{(6i),(6j-1)}^{64{\rm Q}} &= \frac{P}{49} \left( 8 h_{i,{\rm R}} h_{j,{\rm R}} + 8 h_{i,{\rm I}} h_{j,{\rm I}} \right), \\
+	Q_{(6i-1),(6j-3)}^{64{\rm Q}} &= Q_{(6i),(6j-4)}^{64{\rm Q}} = \frac{8 P}{49} \left( h_{i,{\rm R}} h_{j,{\rm I}} - h_{i,{\rm I}} h_{j,{\rm R}} \right), \\
+	Q_{(6i-3),(6j-3)}^{64{\rm Q}} &= Q_{(6i),(6j)}^{64{\rm Q}} = \frac{P}{49} \left( 4 h_{i,{\rm R}} h_{j,{\rm R}} + 4 h_{i,{\rm I}} h_{j,{\rm I}} \right), \\
+	Q_{(6i-3),(6j)}^{64{\rm Q}} &= \frac{P}{49} \left( -4 h_{i,{\rm R}} h_{j,{\rm I}} + 4 h_{i,{\rm I}} h_{j,{\rm R}} \right), \\
+	Q_{(6i),(6j-3)}^{64{\rm Q}} &= \frac{P}{49} \left( 4 h_{i,{\rm R}} h_{j,{\rm I}} - 4 h_{i,{\rm I}} h_{j,{\rm R}} \right).
+\end{align}
+}

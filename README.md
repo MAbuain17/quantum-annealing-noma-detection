@@ -56,6 +56,8 @@ Set `RUN_QPU = True` in the notebook and run the final cell. It builds a QUBO fo
 | [`tests/test_detection.py`](tests/test_detection.py) | Checks of the QUBO identity, minimizer agreement, BER accounting, and deterministic frames |
 | [`results/reproduced/`](results/reproduced/) | Generated classical baseline data and figure |
 | [`assets/`](assets/) | Selected diagrams and original thesis figures |
+| [`docs/QUBO_DERIVATION.md`](docs/QUBO_DERIVATION.md) | GitHub-rendered derivation for BPSK, QPSK, 16-QAM, and 64-QAM |
+| [`tex/`](tex/) | Buildable LaTeX thesis source, bibliography, and original figures |
 | [`docs/`](docs/) | EE599 thesis and research paper |
 
 Run the checks with `python -m unittest discover -s tests -v` after installing the package.
@@ -71,7 +73,7 @@ Q[i,j] = 2 Re(conj(A_i) A_j),  i < j
 E(q) = offset + Σ_i Q[i,i] q_i + Σ_{i<j} Q[i,j] q_i q_j
 ```
 
-The nonconstant terms are the QUBO. `qubo_from_frame` returns both the coefficients and the constant offset so that their energy can be checked against the original residual. The exhaustive solver searches at most 16 binary variables in these teaching scenarios; that cap keeps the classical comparison practical and is not a scalability result.
+The [full derivation](docs/QUBO_DERIVATION.md) shows the four symbol encodings, diagonal and pairwise coefficients, and normalization conventions. The nonconstant terms are the QUBO. `qubo_from_frame` returns both the coefficients and the constant offset so that their energy can be checked against the original residual. The exhaustive solver searches at most 16 binary variables in these teaching scenarios; that cap keeps the classical comparison practical and is not a scalability result.
 
 ## Project context and attribution
 
