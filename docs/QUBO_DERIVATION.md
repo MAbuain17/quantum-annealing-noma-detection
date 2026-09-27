@@ -95,6 +95,14 @@ $$
 
 The corresponding $I,R$ term has the opposite imaginary rotation. Keeping the complex product in the implementation avoids separate sign cases for every real/imaginary combination.
 
+### Interpreting distance as energy
+
+![Four QPSK candidates in the I-Q plane and the corresponding Ising energies for two spins](../assets/qpsk-distance-energy.png)
+
+*Geometric interpretation.* The red cross is the received sample $y$; the four black crosses are candidate points. The left panel shows their Euclidean distances $\mathcal D_1,\ldots,\mathcal D_4$, while the right panel shows the corresponding Ising energies. Minimizing squared distance selects the same candidate as minimizing the encoded energy. Here $(+1,+1)$ is nearest and has the lowest energy, $\mathcal H_3$. Both candidates with a positive real component have lower energies than those with a negative real component, illustrating why one spin can be easier to decide than the other.
+
+The figure is a schematic single-symbol example with axes at $\pm1$, not a measured sample-frequency plot or the repository's normalized QPSK constellation. Its $s_1,s_2$ labels denote Ising spins; binary bits map to spins by $s_i=2q_i-1$. They are distinct from the complex user symbol $s_k$ used above. An additive energy offset does not change the ordering of candidates. See the [QPU workflow guide](QPU_WORKFLOW.md) for how returned samples are interpreted.
+
 ## 4. 16-QAM: two bits on each axis
 
 Let $b=1/(3\sqrt2)$. The real and imaginary amplitudes are each selected from $\{-3b,-b,b,3b\}$ by two binary bits:

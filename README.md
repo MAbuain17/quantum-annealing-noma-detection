@@ -57,12 +57,17 @@ Set `RUN_QPU = True` in the notebook and run the final cell. It builds a QUBO fo
 | [`results/reproduced/`](results/reproduced/) | Generated classical baseline data and figure |
 | [`assets/`](assets/) | Selected diagrams and original thesis figures |
 | [`docs/QUBO_DERIVATION.md`](docs/QUBO_DERIVATION.md) | GitHub-rendered derivation for BPSK, QPSK, 16-QAM, and 64-QAM |
+| [`docs/QPU_WORKFLOW.md`](docs/QPU_WORKFLOW.md) | Illustrated guide to the annealing workflow, minor embedding, and QPU timing |
 | [`tex/`](tex/) | Buildable LaTeX thesis source, bibliography, and original figures |
 | [`docs/`](docs/) | EE599 thesis and research paper |
 
 Run the checks with `python -m unittest discover -s tests -v` after installing the package.
 
 ## Model and formulation
+
+![Channel model: Rayleigh fading and path loss multiply the transmitted signal before AWGN is added](assets/channel-model.png)
+
+*Channel model.* The diagram shows one user's propagation path. In the uplink NOMA model, all users' faded, power-scaled contributions are summed before receiver noise is added. `draw_frame` uses independent complex Gaussian fading coefficients (whose magnitudes are Rayleigh distributed), amplitude attenuation proportional to distance raised to minus half the path-loss exponent, and complex AWGN.
 
 For one received complex sample, the uplink model is $y=\sum_k H_ks_k+n$, where each $H_k$ contains per-user transmit power, Rayleigh fading, and distance-dependent path loss. Write each encoded symbol as $s_k=c+\sum_b w_b q_{kb}$, with binary $q_{kb}$. Let $d=y-c\sum_k H_k$ and $A_{kb}=H_kw_b$. Expanding the squared residual gives:
 
@@ -74,6 +79,14 @@ E(q) = offset + Σ_i Q[i,i] q_i + Σ_{i<j} Q[i,j] q_i q_j
 ```
 
 The [full derivation](docs/QUBO_DERIVATION.md) shows the four symbol encodings, diagonal and pairwise coefficients, and normalization conventions. The nonconstant terms are the QUBO. `qubo_from_frame` returns both the coefficients and the constant offset so that their energy can be checked against the original residual. The exhaustive solver searches at most 16 binary variables in these teaching scenarios; that cap keeps the classical comparison practical and is not a scalability result.
+
+For the next steps, see the [illustrated QPU workflow](docs/QPU_WORKFLOW.md): QUBO submission, minor embedding, sample interpretation, and the distinction between annealing time, QPU access time, and client latency.
+
+## Quantum computing in a centralized radio access network
+
+![Conceptual C-RAN architecture connecting remote radio heads to centralized classical and quantum processors and the mobile core](assets/quantum-cran.png)
+
+*Architectural motivation.* Remote radio heads connect over fronthaul to a centralized data center, where classical and quantum processors could share baseband processing tasks; backhaul connects the data center to the mobile core. The figure places multi-user detection alongside FFT processing, channel estimation, frequency-offset estimation, and error-control coding. This is the thesis's conceptual C-RAN architecture, rather than a deployed system implemented by this repository. The implemented example concerns uplink NOMA detection and optional cloud QPU sampling.
 
 ## Project context and attribution
 
