@@ -33,13 +33,13 @@ Multiplying this expression by its complex conjugate gives
 $$
 E(\mathbf q)=|d|^2-2\sum_i\Re(\overline d A_i)q_i
 +\sum_i|A_i|^2q_i^2
-+2\sum_{i<j}\Re(\overline {A_i}A_j)q_iq_j.
++2\sum_{i\lt j}\Re(\overline {A_i}A_j)q_iq_j.
 $$
 
 Because $q_i^2=q_i$, the QUBO with **one stored coefficient per unordered pair** is
 
 $$
-E(\mathbf q)=E_0+\sum_i Q_{ii}q_i+\sum_{i<j}Q_{ij}q_iq_j,
+E(\mathbf q)=E_0+\sum_i Q_{ii}q_i+\sum_{i\lt j}Q_{ij}q_iq_j,
 $$
 
 $$
@@ -56,7 +56,7 @@ For $q_k\in\{0,1\}$, choose $s_k=2q_k-1$. Thus $c=-1$, $w_1=2$, $d=y+\sum_k H_k$
 
 $$
 Q_{kk}=4|H_k|^2-4\Re(\overline d H_k),\qquad
-Q_{k\ell}=8\Re(\overline {H_k}H_\ell)\quad(k<\ell).
+Q_{k\ell}=8\Re(\overline {H_k}H_\ell)\quad(k\lt\ell).
 $$
 
 With equal power $P_k=P$, substituting $H_k=\sqrt P h_k$ and expanding $d$ gives an equivalent diagonal form:
@@ -108,10 +108,10 @@ Thus $c=-3b(1+j)$ and the ordered weights are $(4b,2b,4jb,2jb)$. There are $4K$ 
 
 | Bit | Weight $w_b$ | Diagonal $Q_{kb,kb}$ |
 | --- | --- | --- |
-| $R1$ | $4b$ | $16b^2|H_k|^2-8b\Re(\overline d H_k)$ |
-| $R2$ | $2b$ | $4b^2|H_k|^2-4b\Re(\overline d H_k)$ |
-| $I1$ | $4jb$ | $16b^2|H_k|^2-8b\Re(j\overline d H_k)$ |
-| $I2$ | $2jb$ | $4b^2|H_k|^2-4b\Re(j\overline d H_k)$ |
+| $R1$ | $4b$ | $16b^2\lvert H_k\rvert^2-8b\Re(\overline d H_k)$ |
+| $R2$ | $2b$ | $4b^2\lvert H_k\rvert^2-4b\Re(\overline d H_k)$ |
+| $I1$ | $4jb$ | $16b^2\lvert H_k\rvert^2-8b\Re(j\overline d H_k)$ |
+| $I2$ | $2jb$ | $4b^2\lvert H_k\rvert^2-4b\Re(j\overline d H_k)$ |
 
 Within one user, $Q_{kR1,kR2}=Q_{kI1,kI2}=16b^2|H_k|^2=8|H_k|^2/9$. Any real-axis/imaginary-axis pair belonging to the same user has zero coupling because the product is purely imaginary. For bits on different users, insert their two weights into $Q_{ij}=2\Re(\overline{H_kw_b}H_\ell w_c)$. This one rule generates the longer real/imaginary coefficient table in Appendix A.
 
