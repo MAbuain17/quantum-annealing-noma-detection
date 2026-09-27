@@ -156,6 +156,10 @@ Real/imaginary pairs of the same user again have zero coupling. Pairs from diffe
 
 ## 6. Conventions and verification
 
+![BPSK, QPSK, 16-QAM, and 64-QAM points under the thesis's peak normalization](../assets/constellations.png)
+
+The blue squares, green diamonds, black triangles, and red circles identify BPSK, QPSK, 16-QAM, and 64-QAM, respectively. The diagram uses the constants $b=1/(3\sqrt2)$ and $a=1/(7\sqrt2)$ defined above; its outer QAM corners have unit magnitude. It shows symbol locations, while the weights below specify their binary labels.
+
 | Modulation | Bits per user | Constant $c$ | Ordered weights $w_b$ |
 | --- | ---: | --- | --- |
 | BPSK | 1 | $-1$ | $2$ |
@@ -172,3 +176,5 @@ python -m unittest discover -s tests -v
 ```
 
 For the thesis's original fully expanded expressions, see [`tex/Chapter3/ee599-chapter3.tex`](../tex/Chapter3/ee599-chapter3.tex) and [`tex/Appendix1/appendix1.tex`](../tex/Appendix1/appendix1.tex).
+
+The [MATLAB implementation](../matlab/README.md) uses the same encodings and coefficients. Its tests check the residual identity and compare ML/SIC decisions with fixed Python reference frames for every modulation.

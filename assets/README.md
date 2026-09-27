@@ -14,3 +14,5 @@ The following supplied PNGs are preserved without alteration and renamed for lin
 | `clique-embedding.png` | `embedding.png` | [QPU guide: clique embeddings](../docs/QPU_WORKFLOW.md#2-logical-variables-and-physical-qubit-chains) |
 | `qpu-service-timing.png` | `timing api.png` | [QPU guide: timing boundaries](../docs/QPU_WORKFLOW.md#4-client-service-and-qpu-timing) |
 | `qpu-access-time.png` | `QPU_access_time.png` | [QPU guide: programming and sampling](../docs/QPU_WORKFLOW.md#4-client-service-and-qpu-timing) |
+
+`constellations.png` is the supplied diagram of BPSK, QPSK, 16-QAM, and 64-QAM under the thesis's peak normalization. It is preserved without alteration in the [README](../README.md#symbol-constellations), [QUBO convention section](../docs/QUBO_DERIVATION.md#6-conventions-and-verification), and [MATLAB modulation guide](../matlab/README.md#channel-and-modulation-conventions).

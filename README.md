@@ -35,6 +35,18 @@ On Windows, activate with `.venv\Scripts\activate`. The script writes `results/r
 
 The four scenarios have 10 BPSK users, 5 QPSK users, 3 16-QAM users, and 2 64-QAM users, respectively. Each uses per-user transmit powers of −20, −10, 0, 10, 20, and 30 dBm; total complex noise power of −60 dBm; path-loss exponent 2.7; and distances listed in [`scripts/reproduce.py`](scripts/reproduce.py). Rayleigh fading, transmitted bits, and noise are newly sampled for each frame. ML and SIC evaluate **the same frames**, and BER is bit errors divided by all transmitted bits. The bit labels are binary amplitude labels, not Gray coding; QAM uses peak-amplitude normalization. These conventions matter when comparing BER values with other simulations.
 
+### MATLAB classical receivers
+
+The [MATLAB implementation](matlab/README.md) includes the same channel and symbol conventions, exhaustive ML, hard-decision SIC, and QUBO energy checks. From the repository root in MATLAB:
+
+```matlab
+addpath('matlab', 'matlab/tests');
+test_detection;
+results = reproduce(1000, 2024);
+```
+
+The run writes a BER CSV and figure under `results/matlab/`. Use `reproduce(100, 2024)` for a shorter run. No additional toolboxes are needed. MATLAB and Python use different random generators; fixed frames are checked for agreement, while seeded BER runs are separate realizations.
+
 ### D-Wave Leap run
 
 The notebook's final section contains an optional live QPU experiment. Install the Ocean integration and configure your [D-Wave Leap credentials](https://docs.dwavequantum.com/en/latest/ocean/leap_authorization.html):
@@ -52,6 +64,7 @@ Set `RUN_QPU = True` in the notebook and run the final cell. It builds a QUBO fo
 | --- | --- |
 | [`notebooks/noma_detection.ipynb`](notebooks/noma_detection.ipynb) | Walkthrough of signal generation, QUBO derivation checks, four modulation scenarios, and optional QPU sampling |
 | [`src/noma_detection.py`](src/noma_detection.py) | Channel model, symbol maps, QUBO expansion, ML and SIC receivers, and Leap adapter |
+| [`matlab/`](matlab/) | MATLAB channel and constellation model, ML/SIC receivers, QUBO checks, and BER reproduction |
 | [`scripts/reproduce.py`](scripts/reproduce.py) | Seeded BER sweep and figure/CSV generation |
 | [`tests/test_detection.py`](tests/test_detection.py) | Checks of the QUBO identity, minimizer agreement, BER accounting, and deterministic frames |
 | [`results/reproduced/`](results/reproduced/) | Generated classical baseline data and figure |
@@ -79,6 +92,12 @@ E(q) = offset + Σ_i Q[i,i] q_i + Σ_{i<j} Q[i,j] q_i q_j
 ```
 
 The [full derivation](docs/QUBO_DERIVATION.md) shows the four symbol encodings, diagonal and pairwise coefficients, and normalization conventions. The nonconstant terms are the QUBO. `qubo_from_frame` returns both the coefficients and the constant offset so that their energy can be checked against the original residual. The exhaustive solver searches at most 16 binary variables in these teaching scenarios; that cap keeps the classical comparison practical and is not a scalability result.
+
+### Symbol constellations
+
+![BPSK endpoints, QPSK points, and nested peak-normalized 16-QAM and 64-QAM constellations](assets/constellations.png)
+
+*Modulation geometry.* Blue squares mark BPSK, green diamonds QPSK, black triangles 16-QAM, and red circles 64-QAM. Here $b=1/(3\sqrt2)$ and $a=1/(7\sqrt2)$; QAM outer corners lie on the unit circle. This is peak normalization, with binary amplitude labels. The [derivation's convention table](docs/QUBO_DERIVATION.md#6-conventions-and-verification) and [MATLAB mappings](matlab/README.md#channel-and-modulation-conventions) specify the corresponding bit order and symbol energies.
 
 For the next steps, see the [illustrated QPU workflow](docs/QPU_WORKFLOW.md): QUBO submission, minor embedding, sample interpretation, and the distinction between annealing time, QPU access time, and client latency.
 
